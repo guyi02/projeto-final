@@ -1,0 +1,33 @@
+<div *ngFor="let course of this.myCourses" class="container">
+  <h3>{{ course.period }}</h3>
+
+  <table class="table table-sm">
+    <thead class="dark">
+      <tr>
+        <th scope="col">Sigla</th>
+        <th scope="col">Matéria</th>
+        <th scope="col">Hora</th>
+        <th scope="col">Dia</th>
+        <th scope="col">Frequência %</th>
+        <th scope="col">Nota</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let details of course.subjects"
+        [ngStyle]="{
+          'background-color': details.status == 'aprovado' ? 'white' : 'gray'
+        }"
+      >
+        <a routerLink="/disciplina/{{ details.sigla }}" class="link">
+          <th scope="row">{{ details.sigla }}</th>
+        </a>
+        <td>{{ details.titulo }}</td>
+        <td>{{ details.hora }}</td>
+        <td>{{ details.dia_aula }}</td>
+        <td>{{ details.freq }} %</td>
+        <td>{{ details.nf }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
